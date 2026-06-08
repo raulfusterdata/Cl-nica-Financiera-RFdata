@@ -12,9 +12,9 @@ from email.mime.multipart import MIMEMultipart
 # ⚙️ CONFIGURACIÓN DE CORREO ELECTRÓNICO
 # ==========================================
 # IMPORTANTE: No uses tu contraseña normal de Gmail. Debes usar una "Contraseña de Aplicación" (Instrucciones abajo)
-EMAIL_REMITENTE = "raulfusterdata@gmail.com"  # Pon aquí tu Gmail
-PASSWORD_APP = "vulr bwou farc oryf" # Pon aquí la contraseña generada por Google
-EMAIL_DESTINO = "raulfusterdata@gmail.com"    # Dónde quieres recibir los leads (puede ser el mismo)
+EMAIL_REMITENTE = st.secrets["EMAIL_REMITENTE"]
+PASSWORD_APP = st.secrets["PASSWORD_APP"]
+EMAIL_DESTINO = st.secrets["EMAIL_DESTINO"]
 
 # ==========================================
 # ⚙️ CONFIGURACIÓN Y ESTILOS UX EXTREMA
