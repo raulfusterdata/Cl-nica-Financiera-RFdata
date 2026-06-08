@@ -7,7 +7,31 @@ import time
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+def check_password():
+    """Devuelve True si el usuario tiene la contraseña correcta."""
+    def password_entered():
+        if st.session_state["password"] == "TU_CONTRASEÑA_SUPER_SECRETA":
+            st.session_state["password_correct"] = True
+            del st.session_state["password"]  # No guardar la contraseña
+        else:
+            st.session_state["password_correct"] = False
 
+    if "password_correct" not in st.session_state:
+        # Primer acceso: mostrar campo de contraseña
+        st.text_input("Contraseña de acceso:", type="password", on_change=password_entered, key="password")
+        return False
+    elif not st.session_state["password_correct"]:
+        # Contraseña incorrecta
+        st.text_input("Contraseña de acceso:", type="password", on_change=password_entered, key="password")
+        st.error("Contraseña incorrecta")
+        return False
+    else:
+        # Contraseña correcta
+        return True
+
+# Bloque principal del código:
+if not check_password():
+    st.stop()  # Detiene la ejecución si no hay contraseña
 # ==========================================
 # ⚙️ CONFIGURACIÓN DE CORREO ELECTRÓNICO
 # ==========================================
