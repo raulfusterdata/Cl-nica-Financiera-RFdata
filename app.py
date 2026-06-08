@@ -10,7 +10,7 @@ from email.mime.multipart import MIMEMultipart
 def check_password():
     """Devuelve True si el usuario tiene la contraseña correcta."""
     def password_entered():
-        if st.session_state["password"] == "TU_CONTRASEÑA_SUPER_SECRETA":
+        if st.session_state["password"] == st.secrets["APP_PASSWORD"]:
             st.session_state["password_correct"] = True
             del st.session_state["password"]  # No guardar la contraseña
         else:
